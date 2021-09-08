@@ -2,6 +2,9 @@ package com.max.idea;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        byte a = 127; // Переменная целочисленного типа с наименьшим диапазоном чисел. Присвоено наибольшее возможное значение.
+        double b = 34.56; // Переменная типа с плавающей точкой с наибольшим диапазоном чисел. Присвоено произвольное дробное значение.
+        System.out.println("Значение переменной типа 'byte' = " + a +"");
+        System.out.print("Значение переменной типа 'double' = " + b +"");
     }
 }
