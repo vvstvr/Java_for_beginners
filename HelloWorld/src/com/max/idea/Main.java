@@ -10,12 +10,14 @@ public class Main {
         int [] MyArray = {5, 6, 7, 8, 9};
         int temp = MyArray[0];
         int summa;
-        MyArray[0] = MyArray[MyArray.length - 1];
-        MyArray[4] = temp;
-        summa = MyArray[0] + MyArray[MyArray.length - 3];
-        System.out.println("Первый элемент массива: " + MyArray[0]);
-        System.out.println("Последний элемент массива: " + MyArray[4]);
-        System.out.println("Сумма первого и среднего элементов массива: " + summa);
 
+        MyArray[0] = MyArray[MyArray.length - 1];
+        MyArray[MyArray.length - 1] = temp;
+
+        summa = MyArray[0] + MyArray[MyArray.length - 3];
+
+        System.out.println("Первый элемент массива: " + MyArray[0]);
+        System.out.println("Последний элемент массива: " + temp);
+        System.out.println("Сумма первого и среднего элементов массива: " + summa);
     }
 }
