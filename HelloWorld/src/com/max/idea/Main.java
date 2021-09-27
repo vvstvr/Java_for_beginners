@@ -40,7 +40,6 @@ public class Main {
 ========================================================================================================================
  */
 
-    // private сделал для дого, что бы использовать переменные с одинаковыми именами в разных методах
     private static void work4() {
         Scanner num = new Scanner(System.in);
         double a, b, c, result1, result2;
@@ -79,10 +78,8 @@ public class Main {
     */
     private static void work5 () {
         Scanner num = new Scanner(System.in);
-        double a, b, c;
-        double result = 0;
+        double a, b;
         char operation;
-        String answer = null;
         System.out.print("Введите первое число: ");
         a = num.nextFloat();
         System.out.print("Введите второе число: ");
@@ -91,21 +88,24 @@ public class Main {
         operation = num.next().charAt(0);
         switch (operation) {
             case '+':
-                result = a + b;
+                System.out.println("Результат вычесления: " + (a + b));
                 break;
             case '-':
-                result = a - b;
+                System.out.println("Результат вычесления: " + (a - b));
                 break;
             case '*':
-                result = a * b;
+                System.out.println("Результат вычесления: " + (a * b));
                 break;
             case '/':
-                result = a / b;
+                if (b <= 0) {
+                System.out.println("Делить на `0` нельзя!");
+            }
+                else
+                    System.out.println("Результат вычесления: " + (a / b));
                 break;
             default:
                 System.out.print("Операция не распознана!");
         }
-        System.out.println(result);
     }
 
 /*
@@ -133,8 +133,8 @@ public class Main {
 
     private static void work6 () {
         Scanner zMenu = new Scanner(System.in);
-        int a, b, zMass;
-        double mass = 0, dis = 0;
+        int a, zMass, zDist;
+        double mass = 0, massT = 0, massKg = 0, distMm = 0, distSm = 0, distM = 0;
         System.out.print("Выберите переводимую велечину: \n 1 - Масса \n 2 - Расстояние \n");
         a = zMenu.nextInt();
         switch (a) {
@@ -144,29 +144,22 @@ public class Main {
                 zMass = massMenuIn.nextInt();
                 switch (zMass) {
                     case 1:
-                        double massGr = 0, massT = 0, massKg = 0;
                         Scanner massInG = new Scanner(System.in);
                         System.out.print("Введите число: ");
                         mass = massInG.nextDouble();
-                        massKg = mass / 1000;
-                        massT = massKg / 1000;
-                        System.out.print(" Граммы: " + mass + "\n Килограммы: " + massKg + "\n Тонны: " + massT );
+                        System.out.print(" Граммы: " + mass + "\n Килограммы: " + (mass / 1000) + "\n Тонны: " + (mass / 1000000));
                         break;
                     case 2:
                         Scanner massInKg = new Scanner(System.in);
                         System.out.print("Введите число: ");
                         massKg = massInKg.nextDouble();
-                        massGr = massKg * 1000;
-                        massT = massKg / 1000;
-                        System.out.print(" Граммы: " + massGr + "\n Килограммы: " + massKg + "\n Тонны: " + massT );
+                        System.out.print(" Граммы: " + (massKg * 1000) + "\n Килограммы: " + massKg + "\n Тонны: " + (massKg / 1000));
                         break;
                     case 3:
                         Scanner massInT = new Scanner(System.in);
                         System.out.print("Введите число: ");
                         massT = massInT.nextDouble();
-                        massKg  = massT * 1000;
-                        massGr = massKg * 1000;
-                        System.out.print(" Граммы: " + massGr + "\n Килограммы: " + massKg + "\n Тонны: " + massT );
+                        System.out.print(" Граммы: " + (massT * 1000000) + "\n Килограммы: " + (massT * 1000) + "\n Тонны: " + massT);
                         break;
                     default:
                         System.out.print("Не выбрана еденица измерения !");
@@ -176,32 +169,25 @@ public class Main {
             case 2:
                 Scanner distMenuIn = new Scanner(System.in);
                 System.out.print("Выберите еденицу измерения: \n 1 - Миллиметры \n 2 - Сантиметры \n 3 - Метры \n");
-                zMass = distMenuIn.nextInt();
-                switch (zMass) {
+                zDist = distMenuIn.nextInt();
+                switch (zDist) {
                     case 1:
-                        double distMm, distSm, distM;
                         Scanner distInMm = new Scanner(System.in);
                         System.out.print("Введите число: ");
                         distMm = distInMm.nextDouble();
-                        distSm = distMm / 10;
-                        distM = distSm / 100;
-                        System.out.print("Миллиметры: " + distMm + "\n Сантиметры: " + distSm + "\n Метры: " + distM );
+                        System.out.print("Миллиметры: " + distMm + "\n Сантиметры: " + (distMm / 10) + "\n Метры: " + (distMm / 100));
                         break;
                     case 2:
                         Scanner distInSm = new Scanner(System.in);
                         System.out.print("Введите число: ");
                         distSm = distInSm.nextDouble();
-                        distMm = distSm * 10;
-                        distM = distSm / 100;
-                        System.out.print("Миллиметры: " + distMm + "\n Сантиметры: " + distSm + "\n Метры: " + distM );
+                        System.out.print("Миллиметры: " + (distSm * 10) + "\n Сантиметры: " + distSm + "\n Метры: " + (distSm / 100));
                         break;
                     case 3:
                         Scanner distInM = new Scanner(System.in);
                         System.out.print("Введите число: ");
                         distM = distInM.nextDouble();
-                        distSm = distM * 100;
-                        distMm = distSm * 10;
-                        System.out.print("Миллиметры: " + distMm + "\n Сантиметры: " + distSm + "\n Метры: " + distM );
+                        System.out.print("Миллиметры: " + (distM * 1000) + "\n Сантиметры: " + (distM * 100) + "\n Метры: " + distM);
                         break;
                     default:
                         System.out.print("Не выбрана еденица измерения !");
