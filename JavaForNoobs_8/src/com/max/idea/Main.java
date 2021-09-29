@@ -16,24 +16,16 @@ public class Main {
         Scanner input = new Scanner(System.in);
         System.out.println("Введите любое положительное число: ");
         int n = input.nextInt();
-
-        // Создадим массив с длинной n
-        int array[] = new int[n];
-
-        // Заполним массив числами от 1 до n
-        int value = 1;
-        for (int i = 0; i < array.length; i++) {
-            array[i] = value;
-            value += 1;
-        }
-        // считаем сумму нечётных элеметов
-        for (int j = 0; j < array.length; j++) {
-            if (array[j] % 2 != 0) {
-                ++x;
-                sum += array[j];
-
+        if (n > 0) {
+            for (int i = 1; i <= n; i += 2) {
+                    sum += i;
             }
+            System.out.println(sum);
         }
-        System.out.println("Сумма нечётных элементов от 1 до " + n + ": " + sum);
+        else {
+            System.out.println("Некорректный ввод!");
+        }
+
+
     }
 }
