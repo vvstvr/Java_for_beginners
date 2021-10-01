@@ -10,42 +10,34 @@
 
 package com.max.idea;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int n, m;
-        int x = 3;
+        Scanner scanner = new Scanner(System.in);
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите количество строк матрицы: ");
-        n = in.nextInt();
+        System.out.print("Введите колличество строк: ");
+        int n = scanner.nextInt();
 
-        System.out.print("Введите количество столбцов матрицы: ");
-        m = in.nextInt();
+        System.out.print("Введите колличество столбцов: ");
+        int m = scanner.nextInt();
 
+        String result = "";
+        int[][] massive = new int[n][m];
 
-        int[][] array = new int[n][m];
-
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                System.out.print("Введите элемент матрицы[" + i + "][" + j + "]:");
-                array[i][j] = in.nextInt();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                System.out.print("Введите значение элемента [" + i + "][" + j + "]: ");
+                massive[i][j] = scanner.nextInt();
+                if (i == 0) {
+                    result += massive[i][j] * 3 + " ";
+                }
             }
-            System.out.print(array[0][j]);
         }
+        System.out.println("Результат: " + result);
+    }
+}
 
-
-        for (int i = 0; i < array.length; i++) {
-            //System.out.print(array[0][j]);
-
-        }
-                //System.out.print(Arrays.deepToString(array[][0]));
-
-            System.out.println();
-        }
-        }
 
 
 

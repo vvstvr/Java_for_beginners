@@ -84,13 +84,13 @@ public class Main {
         Scanner string = new Scanner(System.in);
         String str = string.nextLine();
 
-        if (str.contains("Java") & str.startsWith("I like") & str.endsWith("!!!")) {
+        if (str.contains("Java") && str.startsWith("I like") && str.endsWith("!!!")) {
             // Переводим в верхний регистр всю фразу
             System.out.println(str.toUpperCase(Locale.ROOT));
             // Заменяем 'а' на 'o'
             String nStr = str.replace( 'a', 'o');
             // Выводим подстроку
-            System.out.println(nStr.substring(6, 11));
+            System.out.println(nStr.substring(7, 11));
 
         }
     }
@@ -104,14 +104,33 @@ public class Main {
 */
 
     private static void work13() {
-        Scanner string = new Scanner(System.in);
-        String str = string.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите строку");
+        String str = scanner.nextLine();
+        String aStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-        // Используем регулярные выражения.
-        String str1 = str.replaceAll("[а-яА-Я\\d]", "");
-        System.out.println(str1 + "\nКоличество слов: " + str1.split("\\s+").length);
+        boolean word = false;
+
+        String[] words = str.split(" ");
+        int count = 0;
+        for (int i = 0; i < words.length; i++) {
+
+            char[] symbols = words[i].toCharArray();
+            for (int j = 0; j < symbols.length; j++) {
+                int index = aStr.indexOf(Character.toUpperCase(symbols[j]));
+                if (index == -1) {
+                    word = false;
+                    break;
+                } else {
+                    word = true;
+                }
+            } if (word) {
+                System.out.print(words[i] + "\n");
+                count++;
+            }
+        }
+        System.out.println("Количество слов: " + count);
     }
-
 
 
 /*
@@ -123,25 +142,24 @@ public class Main {
 
     private static void work14() {
 
-        int[] array = new int[15];
-        int max = 0, min = 0;
+        double[] array = new double[15];
+        double min = Double.MAX_VALUE, max = Double.MIN_VALUE;
 
-        // Заполняем массив значениями
-        for (int i = 0; i < array.length; i++) {
-            array[i] = ((int) (Math.random() * 40) - 20);
-            //  System.out.println(array[i]); // for debug
+        for(int i = 0; i < array.length; i++ ){
+            array[i] = (Math.random() * 40) - 20;
+            System.out.println(array[i]);
+            if (min > array[i]) {
+                min = array[i];
+            }
+            if (max < array[i]) {
+                max = array[i];
+            }
         }
 
-        // Ищем максимальный и миниальный элемент
-        for (int i = 0; i <array.length; i++) {
-          max = Math.max(max, array[i]);
-          min = Math.min(min, array[i]);
-        }
-        System.out.println("Максимальное значение в массиве: " + max);
-        System.out.println("Минимальное значение в массиве: " + min);
+        System.out.println("Минимальное число: " + min);
+        System.out.println("Максимальное число: " + max);
 
-        // Ищем наибольшее по модулю и выводим его
-        int result = Math.max(Math.abs(max), Math.abs(min));
+        double result = Math.max(Math.abs(max), Math.abs(min));
         System.out.println("Наибольшее по модулю: " + result);
 
     }
